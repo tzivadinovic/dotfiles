@@ -8,7 +8,6 @@ markup=pango
 #interval=persist
 #align=left
 
-
 [music]
 align=left
 label=
@@ -36,14 +35,19 @@ command=~/.local/bin/statusbar/disk / 
 
 [disk]
 interval=60
-command=~/.local/bin/statusbar/disk /home 
+command=~/.local/bin/statusbar/disk /run/mount/backup/ 
+
+#[disk]                                                                          
+#interval=60                                                                     
+#command=~/.local/bin/statusbar/disk /run/mount/hdd-500gb_0/ 
+
+#[disk]                                                                          
+#interval=60                                                                     
+#command=~/.local/bin/statusbar/disk /run/mount/hdd-500gb_1/ 
 
 [crypto]
 interval=60
-command=~/.local/bin/crypto -t0 -f '%s $%.1f'
-
-[launch]
-interval=60
+command=~/.local/bin/crypto -t0 -f '%s:$%.1f'
 
 [weather]
 interval=60
@@ -51,10 +55,6 @@ interval=60
 [battery]
 interval=60
 command=~/.local/bin/statusbar/battery BAT1
-
-[tasks]
-label=
-interval=60
 
 [cgs]
 label= 
@@ -68,12 +68,6 @@ interval=60
 
 [services]
 interval=10
-
-#[desk]
-#label= 
-#ommand=desk mon-last
-#interval=persist
-#align=left
 
 [notify-status]
 interval=5

@@ -113,3 +113,9 @@ bindkey '^ ' autosuggest-accept
 # pidswallow
 [ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
 trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
+alias cpwd='echo $PWD | xclip -sel c'
+alias update='yay -Syyu'
+alias cl='clear'
+alias s='systemctl'
+alias isumdb='ssh -p 2203 -L 33061:127.0.0.1:33061 -N toma@7aske.xyz'
+alias oldisumdb='ssh -p 2203 -L 9922:127.0.0.1:9922 -N toma@7aske.xyz'
