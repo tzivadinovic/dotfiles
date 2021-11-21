@@ -122,7 +122,7 @@ mode "$mode_config" {
 }
 
 bindsym $mod+e       exec --no-startup-id $terminal -e $termfile
-bindsym $mod+Shift+f exec --no-startup-id thunar 
+bindsym $mod+Shift+f exec --no-startup-id nautilus 
 bindsym $mod+w       exec --no-startup-id $browser
 bindsym $mod+Shift+v exec --no-startup-id $terminal -e $editor
 bindsym $mod+Shift+w exec --no-startup-id $browser --incognito
@@ -139,7 +139,7 @@ bindsym $mod+F10           exec --no-startup-id echo 0 | dmenu -p 'screen: ' -fn
 bindsym $mod+Shift+F10     exec --no-startup-id BLOCK_BUTTON=1 ~/.local/bin/statusbar/rec-status
 
 bindsym $mod+Mod1+t            exec --no-startup-id qbittorrent
-bindsym $mod+Mod1+l            exec --no-startup-id lutris
+#bindsym $mod+Mod1+l            exec --no-startup-id lutris
 bindsym $mod+Mod1+Shift+d      exec --no-startup-id gnome-disks
 bindsym $mod+Mod1+b            exec --no-startup-id baobab
 bindsym $mod+Mod1+m            exec --no-startup-id wtoggle $mail
@@ -444,7 +444,6 @@ for_window [class="(?i)vncviewer"] move position center
 for_window [class="Arandr"] floating enable,resize set 800 600, move position center
 for_window [class="Baobab"] floating enable resize set 1024 720, move position center
 for_window [class="Deluge"] floating enable move position center
-for_window [class="Evolution"] floating enable, resize set 1333 768, move position center
 for_window [class="Gnome-font-viewer"] floating enable, move position center
 for_window [class="Kvantum Manager"] floating enable, move position center
 for_window [class="Lightdm-settings"] floating enable
@@ -593,6 +592,7 @@ exec_always --no-startup-id pgrep pasystray  || pasystray
 bindsym $mod+z exec --no-startup-id zoomsh
 bindsym $mod+Mod1+i exec --no-startup-id isumlinks
 bindsym $mod+Shift+End exec --no-startup-id rdisc
+bindsym $mod+Mod1+l exec --no-startup-id i3exit lock
 
 # touchpad and keyboard config
 # 7aske-scripts
