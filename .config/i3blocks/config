@@ -82,6 +82,10 @@ interval=5
 label= 
 interval=60
 
+[bar-calc]
+label=
+interval=1
+
 [clock]
 label=
 interval=1

@@ -123,6 +123,7 @@ mode "$mode_config" {
 
 bindsym $mod+e       exec --no-startup-id $terminal -e $termfile
 bindsym $mod+Shift+f exec --no-startup-id nautilus 
+bindsym $mod+Mod1+c  exec --no-startup-id wtoggle galculator 
 bindsym $mod+w       exec --no-startup-id $browser
 bindsym $mod+Shift+v exec --no-startup-id $terminal -e $editor
 bindsym $mod+Shift+w exec --no-startup-id $browser --incognito
@@ -432,7 +433,7 @@ for_window [class="(?i)blueman-manager"] floating enable, resize set 512 256, mo
 for_window [class="(?i)blueman-services"] floating enable, resize set 512 256, move position center
 for_window [class="(?i)cantata"] floating enable, resize set 1024 768, move position center
 for_window [class="(?i)feh"] fullscreen enable
-for_window [class="(?i)gnome-calculator"] floating enable
+for_window [class="(?i)galculator"] floating enable
 for_window [class="(?i)gnome-control-center"] floating enable, resize set 1280 820, move position center
 for_window [class="(?i)gnome-disks"] floating enable
 for_window [class="(?i)gnome-tweaks"] floating enable, resize set 1280 820, move position center
