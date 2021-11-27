@@ -35,7 +35,7 @@ command=~/.local/bin/statusbar/disk / 
 
 [disk]
 interval=60
-command=~/.local/bin/statusbar/disk /run/mount/backup/ 
+command=~/.local/bin/statusbar/disk /run/mount/backup/ 
 
 #[disk]                                                                          
 #interval=60                                                                     
@@ -80,7 +80,7 @@ interval=5
 
 [layout]
 label= 
-interval=60
+interval=1
 
 [bar-calc]
 label=

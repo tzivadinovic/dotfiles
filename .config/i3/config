@@ -122,7 +122,7 @@ mode "$mode_config" {
 }
 
 bindsym $mod+e       exec --no-startup-id $terminal -e $termfile
-bindsym $mod+Shift+f exec --no-startup-id nautilus 
+bindsym $mod+Shift+f exec --no-startup-id thunar 
 bindsym $mod+Mod1+c  exec --no-startup-id wtoggle galculator 
 bindsym $mod+w       exec --no-startup-id $browser
 bindsym $mod+Shift+v exec --no-startup-id $terminal -e $editor
