@@ -419,9 +419,9 @@ assign [class="(?i)caprine"] $ws9
 assign [class="(?i)discord"] $ws9
 assign [class="(?i)lightcord"] $ws9
 assign [class="(?i)skype"] $ws9
-assign [class="(?i)viber"] $ws9
+assign [class="(?i)viber"] $ws8
 assign [class="zoom"] zoom
-assign [title="WhatsApp"] $ws9
+assign [title="WhatsApp"] $ws8
 assign [class="Idena"] i
 
 # Open specific applications in floating mode
