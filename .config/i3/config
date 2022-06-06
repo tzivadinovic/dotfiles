@@ -125,6 +125,7 @@ bindsym $mod+e       exec --no-startup-id $terminal -e $termfile
 bindsym $mod+Shift+f exec --no-startup-id thunar 
 bindsym $mod+Mod1+c  exec --no-startup-id wtoggle galculator 
 bindsym $mod+w       exec --no-startup-id $browser
+bindsym $mod+c       exec --no-startup-id chromium
 bindsym $mod+Shift+v exec --no-startup-id $terminal -e $editor
 bindsym $mod+Shift+w exec --no-startup-id $browser --incognito
 # 7aske-scripts
@@ -143,7 +144,7 @@ bindsym $mod+Mod1+t            exec --no-startup-id qbittorrent
 #bindsym $mod+Mod1+l            exec --no-startup-id lutris
 bindsym $mod+Mod1+Shift+d      exec --no-startup-id gnome-disks
 bindsym $mod+Mod1+b            exec --no-startup-id baobab
-bindsym $mod+Mod1+m            exec --no-startup-id wtoggle $mail
+#bindsym $mod+Mod1+m            exec --no-startup-id wtoggle $mail
 bindsym $mod+Mod1+v            exec --no-startup-id vncviewer
 bindsym $mod+Mod1+Shift+b      exec --no-startup-id virtualbox
 bindsym $mod+Mod1+d            exec --no-startup-id discord
@@ -295,7 +296,7 @@ for_window [class="floating"] floating enable
 floating_modifier $mod
 
 # float and center the current window
-bindsym $mod+c floating enable; move position center
+#bindsym $mod+c floating enable; move position center
 
 # change borders
 bindsym $mod+u border toggle $border_size; exec --no-startup-id notify-send --hint=int:transient:1 -t $notif_duration "border" "border toggled"
@@ -586,11 +587,12 @@ exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id pgrep -x $terminal || $terminal
 
 # pulseaudio
-exec_always --no-startup-id /home/toma/util/pulseaudio.sh
+exec_always --no-startup-id pgrep pulseaudio || (while ! $(pulseaudio -k; pulseaudio -D); do; done)
 exec_always --no-startup-id pgrep pasystray  || pasystray
 
 #zoom and links
 bindsym $mod+z exec --no-startup-id zoomsh
+bindsym $mod+Mod1+m exec --no-startup-id /home/toma/util/mouse.sh
 bindsym $mod+Mod1+i exec --no-startup-id isumlinks
 bindsym $mod+Shift+End exec --no-startup-id rdisc
 bindsym $mod+Mod1+l exec --no-startup-id i3exit lock
