@@ -1,6 +1,5 @@
-FileManager=custom-FileManager
-MailReader=custom-MailReader
-WebBrowser=brave
+FileManager=thunar
+MailReader=thunderbird
 TerminalEmulator=custom-TerminalEmulator
-FileManagerDismissed=true
+WebBrowser=brave
 

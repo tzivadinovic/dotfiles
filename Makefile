@@ -20,6 +20,7 @@ all: albert \
 	neofetch \
 	newsboat \
 	nvim \
+	ranger \
 	rofi \
 	sxiv \
 	tmux \
@@ -37,7 +38,8 @@ all: albert \
 	rc \
 	xresources \
 	ideavim \
-	imwheel
+	imwheel \
+	qtile
 
 albert:
 	./mklink albert
@@ -84,6 +86,9 @@ newsboat:
 nvim:
 	./mklink nvim
 
+ranger:
+	./mklink ranger
+
 rofi:
 	./mklink rofi
 
@@ -113,6 +118,7 @@ picom: compton
 
 zsh:
 	./mklink zsh
+	mkdir -p ${HOME}/.cache/zsh
 	ln -sf "${HOME}/.config/zsh/.zshrc" "${HOME}/.zshrc"
 
 zathura:
@@ -145,3 +151,6 @@ imwheel:
 task:
 	./mklink task
 	./mklink taskrc
+
+qtile:
+	./mklink qtile

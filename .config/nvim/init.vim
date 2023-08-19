@@ -43,7 +43,13 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'joshdick/onedark.vim'
 	Plug 'morhetz/gruvbox'
+
+	Plug 'github/copilot.vim', {'branch': 'release'}
 call plug#end()
+
+let g:copilot_filetypes = {
+			\ 'markdown': v:true,
+			\ }
 
 
 " GENERAL ----------------------------------------
@@ -72,6 +78,7 @@ set smartindent
 set t_Co=256
 set updatetime=50
 set wildmenu
+set isfname+=@-@
 syntax on
 let &scrolloff = &lines / 5
 

@@ -15,11 +15,11 @@ istty() {
 antigen use oh-my-zsh
 antigen bundle docker
 antigen bundle docker-compose
+antigen bundle kubectl
 antigen bundle mvn
 antigen bundle npm
 antigen bundle pip
 antigen bundle rust
-antigen bundle rustup
 antigen bundle command-not-found
 antigen bundle virtualenv
 antigen bundle gitignore
@@ -30,7 +30,7 @@ fi
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
-
+antigen bundle fd
 
 if [ ! $(istty) ]; then
 	[ -e ~/.config/zsh/agnoster-custom.zsh-theme ] && source ~/.config/zsh/agnoster-custom.zsh-theme
@@ -56,6 +56,7 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
+setopt completealiases
 _comp_options+=(globdots)		# Include hidden files.
 COMPLETION_WAITING_DOTS="true"
 
@@ -109,14 +110,10 @@ bindkey -s '^y' 'yay\n'
 
 # ctrl+space
 bindkey '^ ' autosuggest-accept
+bindkey '^r' history-incremental-search-backward
 
 # pidswallow
 [ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
 trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
-alias cpwd='echo $PWD | xclip -sel c'
-alias update='yay -Syyu'
-alias cl='clear'
-alias s='systemctl'
-alias isumdb='ssh -p 2203 -L 33061:127.0.0.1:33061 -N toma@7aske.xyz'
-alias oldisumdb='ssh -p 2203 -L 9922:127.0.0.1:9922 -N toma@7aske.xyz'
-alias isthours='ssh -L 9999:192.168.5.193:80 -J toma@7aske.xyz:2203 -p 2222 -N toma@localhost'
+
+[ -e "$HOME/.zprofile" ] && . "$HOME/.zprofile"

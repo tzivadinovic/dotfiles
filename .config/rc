@@ -30,11 +30,14 @@ gsl()     { git status --long $@;          }
 gss()     { git status -s $@;              }
 gst()     { git stash $@;                  }
 gsta()    { git stash apply $@;            }
+gstp()    { git stash pop $@;              }
+gsts()    { git stash show $@;             }
 gfet()    { git fetch $@;                  }
 glog()    { git log --graph $@;            }
 gremote() { git remote -v $@;              }
 gco()     { git checkout $@;               }
-gammend() { git commit --amend $@;        }
+gammend() { git commit --amend $@;         }
+gsw()     { git switch $@;                 }
 
 #       _ _                     
 #  __ _| (_) __ _ ___  ___  ___ 
@@ -53,6 +56,7 @@ alias clion='_setsid clion'
 alias datagrip='_setsid datagrip'
 alias zathura='_setsid zathura'
 alias studio='_setsid studio'
+alias rider='_setsid rider'
 alias brave='_setsid brave'
 alias et='_setsid et'
 alias wps='_setsid wps'
@@ -66,7 +70,7 @@ alias o='xdg-open'
 alias z='zathura'
 alias s='systemctl'
 alias e="$TERMFILE"
-function c { vscodium $@ || codium $@ || code-insiders $@ || /usr/bin/code $@; }
+function c { /usr/bin/code $@; }
 alias bat='bat -p --paging never --theme=base16'
 alias myip='curl -s api.ipify.org'
 alias grep='grep --color=auto'
@@ -91,6 +95,8 @@ alias pub='builtin cd $HOME/Public&& ls'
 alias shr='builtin cd /usr/share&& ls'
 alias etc='builtin cd /etc&& ls'
 alias lcl='builtin cd $HOME/.local&& ls'
+alias lcls='builtin cd $HOME/.local/bin/scripts&& ls'
+alias lclb='builtin cd $HOME/.local/bin&& ls'
 alias tmp='builtin cd $HOME/.local/tmp&& ls'
 alias chgs='cd "$(codegs)" && echo -e "\ngit status -s\n"; git status -s'
 alias vicfg='vimcfg'
@@ -153,15 +159,19 @@ function open() {
 
 if [ -n "$FZF_CODE" ]; then
 	function code() {
+		_CODE="$(cgs -C)"
+		if [ -z "$_CODE" ]; then
+			_CODE="$CODE"
+		fi
 		if [ $# -eq 0 ]; then
-			builtin cd "$CODE" && ls
+			builtin cd "$_CODE" && ls
 			return 0
 		fi
 
 		if [ $# -eq 1 ]; then
-			MATCH="$(fd . "$CODE" -d 2 -L -t d | fzf -f "$1" | head -1)"
+			MATCH="$(fd . "$_CODE" -d 2 -L -t d | fzf -f "$1" | head -1)"
 		elif [ $# -eq 2 ]; then
-			MATCH="$(fd . "$CODE/$1" -d 2 -L -t d | fzf -f "$2" | head -1)"
+			MATCH="$(fd . "$_CODE/$1" -d 2 -L -t d | fzf -f "$2" | head -1)"
 		fi
 
 		if [ -z "$MATCH" ]; then
@@ -172,20 +182,24 @@ if [ -n "$FZF_CODE" ]; then
 	}
 else
 	function code() {
+		_CODE="$(cgs -C)"
+		if [ -z "$_CODE" ]; then
+			_CODE="$CODE"
+		fi
 		if [ $# -eq 0 ]; then
-				builtin cd "$CODE" && ls
+				builtin cd "$_CODE" && ls
 		elif [ $# -eq 1 ]; then
-			if [ -d "$CODE/$1" ]; then
-				builtin cd "$CODE/$1" && ls
+			if [ -d "$_CODE/$1" ]; then
+				builtin cd "$_CODE/$1" && ls
 			else
-				cdir="$(find "$CODE" -maxdepth 2 -name "*$1*" | sed -n '1p')"
+				cdir="$(find "$_CODE" -maxdepth 2 -name "*$1*" | sed -n '1p')"
 				[ -d "$cdir" ] && builtin cd "$cdir" && ls
 			fi
 		elif [ $# -eq 2 ]; then
-			if [ -d "$CODE/$1/$2" ]; then
-				builtin cd "$CODE/$1/$2" && ls
+			if [ -d "$_CODE/$1/$2" ]; then
+				builtin cd "$_CODE/$1/$2" && ls
 			else
-				cdir="$(find "$CODE/$1" -maxdepth 1 -name "*$2*" | sed -n '1p')"
+				cdir="$(find "$_CODE/$1" -maxdepth 1 -name "*$2*" | sed -n '1p')"
 				[ -d "$cdir" ] && builtin cd "$cdir" && ls
 			fi
 		fi

@@ -2,7 +2,6 @@ command=~/.local/bin/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-
 #[window]
 #command=xtitle -s
 #interval=persist
@@ -10,19 +9,19 @@ markup=pango
 
 [music]
 align=left
-label=
 interval=5
+signal=11
+
+[weather]
+interval=60
 
 [cpu]
-label= 
 interval=5
 
 [temp]
-label= 
 interval=5
 
 [memory]
-label= 
 interval=10
 
 [bandwidth]
@@ -31,33 +30,26 @@ interval=1
 
 [disk]
 interval=60
+signal=9
 command=~/.local/bin/statusbar/disk / 
 
 [disk]
 interval=60
-command=~/.local/bin/statusbar/disk /run/mount/backup/ 
+signal=9
+command=~/.local/bin/statusbar/disk /home 
 
-#[disk]                                                                          
-#interval=60                                                                     
-#command=~/.local/bin/statusbar/disk /run/mount/hdd-500gb_0/ 
+#[crypto]
+#interval=60
+#command=~/.local/bin/crypto -t0 -f '%s $%.1f'
 
-#[disk]                                                                          
-#interval=60                                                                     
-#command=~/.local/bin/statusbar/disk /run/mount/hdd-500gb_1/ 
-
-[crypto]
-interval=60
-command=~/.local/bin/crypto -t0 -f '%s:$%.1f'
-
-[weather]
+[launch]
 interval=60
 
-[battery]
-interval=60
-command=~/.local/bin/statusbar/battery BAT1
+#[tasks]
+#label=
+#interval=60
 
 [cgs]
-label= 
 interval=60
 
 #[newsboat]
@@ -65,26 +57,46 @@ interval=60
 
 [packages]
 interval=60
+signal=9
 
 [services]
 interval=10
+signal=9
 
-[notify-status]
-interval=5
+#[desk]
+#label= 
+#command=desk mon-last
+#interval=persist
+#align=left
 
 [rec-status]
 interval=5
+signal=9
 
 [mic-status]
 interval=5
+signal=10
+
+#[power]
+#interval=persist
+
+[volume]
+interval=5
+signal=10
+
+[battery]
+interval=60
+command=~/.local/bin/statusbar/battery
+signal=9
 
 [layout]
 label= 
-interval=1
+interval=60
+signal=9
 
-[bar-calc]
-label=
-interval=1
+[notify-status]
+interval=5
+signal=9
 
 [clock]
 label=

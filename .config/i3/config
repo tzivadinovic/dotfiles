@@ -1,10 +1,10 @@
-#i3 config file (v4)
-#  _                        _                        __ _       
-# | |_ ___  _ __ ___   __ _( )___    ___ ___  _ __  / _(_) __ _ 
-# | __/ _ \| '_ ` _ \ / _` |// __|  / __/ _ \| '_ \| |_| |/ _` |
-# | || (_) | | | | | | (_| | \__ \ | (_| (_) | | | |  _| | (_| |
-#  \__\___/|_| |_| |_|\__,_| |___/  \___\___/|_| |_|_| |_|\__, |
-#                                                         |___/ 
+# i3 config file (v4)
+#  _____         _        _       _ _____                    __ _
+# |___  |_ _ ___| | _____( )___  (_)___ /    ___ ___  _ __  / _(_) __ _
+#    / / _` / __| |/ / _ \// __| | | |_ \   / __/ _ \| '_ \| |_| |/ _` |
+#   / / (_| \__ \   <  __/ \__ \ | |___) | | (_| (_) | | | |  _| | (_| |
+#  /_/ \__,_|___/_|\_\___| |___/ |_|____/   \___\___/|_| |_|_| |_|\__, |
+# 7aske's i3 config                                               |___/
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -35,13 +35,13 @@ set $mail        $MAIL
 set $dmenu_font  Fira Code Medium-12
 set $font        xft:Fira Code Medium 10
 set $status_font pango:FiraCode Nerd Font Medium 10
-set $gaps_inner  10
+set $gaps_inner  20
 set $gaps_outer  0
 set $border_size 2
 
 # set terminal commands
 set $terminal   $TERMINAL
-set $terminal2  xterm
+set $terminal2  kitty
 
 
 # sound&music                _  ___                       _
@@ -52,35 +52,37 @@ set $terminal2  xterm
 
 bindsym $mod+p            exec --no-startup-id wtoggle pavucontrol
 # 7aske-scripts
-bindsym $mod+Ctrl+p       exec --no-startup-id padefault ma 
-bindsym $mod+Mod1+p       exec --no-startup-id padefault mas
-bindsym $mod+Shift+p      exec --no-startup-id padefault toggle
-bindsym $mod+Ctrl+Shift+p exec --no-startup-id padefault toggle-focus
+bindsym $mod+Ctrl+p       exec --no-startup-id padefault ma;           exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Mod1+p       exec --no-startup-id padefault mas;          exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Shift+p      exec --no-startup-id padefault toggle;       exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Ctrl+Shift+p exec --no-startup-id padefault toggle-focus; exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10; notify-send --hint=int:transient:1 -t $notif_duration 'brightness up'"
 # bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10; notify-send --hint=int:transient:1 -t $notif_duration 'brightness down'"
 
 # Media player controls
-bindsym XF86AudioPlay  exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
-bindsym XF86AudioStop  exec --no-startup-id playerctl stop
-bindsym XF86AudioNext  exec --no-startup-id playerctl next
-bindsym XF86AudioPrev  exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay  exec --no-startup-id playerctl play-pause; exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause; exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioStop  exec --no-startup-id playerctl stop;       exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioNext  exec --no-startup-id playerctl next;       exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioPrev  exec --no-startup-id playerctl previous;   exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
 # 7aske-scripts
 bindsym XF86Tools      exec --no-startup-id wtoggle $player
 
-bindsym XF86Calculator exec --no-startup-id $terminal -e calc
+bindsym XF86Calculator exec --no-startup-id $terminal -c calc -e calc
 
 # media controls re-using i3blocks script
-bindsym $mod+period exec --no-startup-id BLOCK_BUTTON=1 ~/.local/bin/statusbar/music
-bindsym $mod+slash  exec --no-startup-id BLOCK_BUTTON=2 ~/.local/bin/statusbar/music
-bindsym $mod+comma  exec --no-startup-id BLOCK_BUTTON=3 ~/.local/bin/statusbar/music
-bindsym $mod+Shift+period exec --no-startup-id BLOCK_BUTTON=4 ~/.local/bin/statusbar/music
-bindsym $mod+Shift+comma  exec --no-startup-id BLOCK_BUTTON=5 ~/.local/bin/statusbar/music
-bindsym $mod+Mod1+period  exec --no-startup-id padefault vol +5%
-bindsym $mod+Mod1+slash   exec --no-startup-id padefault mute-all
-bindsym $mod+Mod1+comma   exec --no-startup-id padefault vol -5%
+bindsym $mod+period            exec --no-startup-id BLOCK_BUTTON=1 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.5 && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+slash             exec --no-startup-id BLOCK_BUTTON=2 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.1 && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+comma             exec --no-startup-id BLOCK_BUTTON=3 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.5 && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+Shift+period      exec --no-startup-id BLOCK_BUTTON=4 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Shift+comma       exec --no-startup-id BLOCK_BUTTON=5 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Ctrl+Shift+period exec --no-startup-id BLOCK_BUTTON=6 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Ctrl+Shift+comma  exec --no-startup-id BLOCK_BUTTON=7 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Mod1+period       exec --no-startup-id padefault vol +5%;                           exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Mod1+slash        exec --no-startup-id padefault mute-all;                          exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+Mod1+comma        exec --no-startup-id padefault vol -5%;                           exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 bindsym $mod+Ctrl+Mod1+period  exec --no-startup-id padefault volume-focus +5%
 bindsym $mod+Ctrl+Mod1+slash   exec --no-startup-id padefault volume-focus 100%
@@ -88,10 +90,17 @@ bindsym $mod+Ctrl+Mod1+comma   exec --no-startup-id padefault volume-focus -5%
 
 # Pulse Audio controls
 # 7aske-scripts
-bindsym XF86AudioRaiseVolume exec --no-startup-id padefault vol +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id padefault vol -5%
-bindsym XF86AudioMute        exec --no-startup-id padefault mute-all
-bindsym XF86AudioMicMute     exec --no-startup-id padefault mute-all-src
+bindsym XF86AudioRaiseVolume exec --no-startup-id padefault vol +1%;      exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id padefault vol -1%;      exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute        exec --no-startup-id padefault mute-all;     exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMicMute     exec --no-startup-id padefault mute-all-src; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id BLOCK_BUTTON=4 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id BLOCK_BUTTON=5 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym Ctrl+Mod1+XF86AudioRaiseVolume exec --no-startup-id padefault volume-focus +1%
+bindsym Ctrl+Mod1+XF86AudioLowerVolume exec --no-startup-id padefault volume-focus -1%
+bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id padefault mic-volume +1%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id padefault mic-volume -1%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+
 
 #                    _ _           _   _
 #   __ _ _ __  _ __ | (_) ___ __ _| |_(_) ___  _ __  ___
@@ -122,41 +131,40 @@ mode "$mode_config" {
 }
 
 bindsym $mod+e       exec --no-startup-id $terminal -e $termfile
-bindsym $mod+Shift+f exec --no-startup-id thunar 
-bindsym $mod+Mod1+c  exec --no-startup-id wtoggle galculator 
+bindsym $mod+Shift+e exec --no-startup-id $file
 bindsym $mod+w       exec --no-startup-id $browser
-bindsym $mod+c       exec --no-startup-id chromium
 bindsym $mod+Shift+v exec --no-startup-id $terminal -e $editor
 bindsym $mod+Shift+w exec --no-startup-id $browser --incognito
 # 7aske-scripts
-bindsym $mod+Mod1+n        exec --no-startup-id BLOCK_BUTTON=2 ~/.local/bin/statusbar/notify-status
-bindsym $mod+Shift+Mod1+n  exec --no-startup-id dunst_reload
-bindsym $mod+n             exec --no-startup-id dunstctl context
-bindsym $mod+Ctrl+n        exec --no-startup-id dunstctl close
-bindsym $mod+Shift+n       exec --no-startup-id dunstctl history-pop
-bindsym $mod+semicolon     exec --no-startup-id tmux list-sessions | cut -d: -f1 | rofi -dmenu -p session | xargs -r $terminal -c tmux_floating -e tmux a -t
+bindsym $mod+Mod1+n         exec --no-startup-id BLOCK_BUTTON=2 ~/.local/bin/statusbar/notify-status; exec --no-startup-id pkill -SIGRTMIN+9 i3blocks
+bindsym $mod+Shift+Mod1+n   exec --no-startup-id dunst_reload
+bindsym $mod+n              exec --no-startup-id dunstctl context
+bindsym $mod+Ctrl+n         exec --no-startup-id dunstctl close
+bindsym $mod+Shift+n        exec --no-startup-id dunstctl history-pop
+bindsym $mod+semicolon      exec --no-startup-id tmux list-sessions | cut -d: -f1 | rofi -dmenu -p session | xargs -I% -r $terminal -c tmux_floating -e tmux a -t "%"
+bindsym $mod+Mod1+semicolon exec --no-startup-id rofi -dmenu -p "new session" | xargs -I% -r $terminal -c tmux_floating tmux new -s "%"
 
 # 7aske-scripts
 bindsym $mod+F10           exec --no-startup-id echo 0 | dmenu -p 'screen: ' -fn '$dmenu_font' | xargs screencam -n
 bindsym $mod+Shift+F10     exec --no-startup-id BLOCK_BUTTON=1 ~/.local/bin/statusbar/rec-status
 
-bindsym $mod+Mod1+t            exec --no-startup-id qbittorrent
-#bindsym $mod+Mod1+l            exec --no-startup-id lutris
+bindsym $mod+Mod1+t            exec --no-startup-id transmission-gtk
+bindsym $mod+Mod1+l            exec --no-startup-id wtoggle lutris
 bindsym $mod+Mod1+Shift+d      exec --no-startup-id gnome-disks
 bindsym $mod+Mod1+b            exec --no-startup-id baobab
-#bindsym $mod+Mod1+m            exec --no-startup-id wtoggle $mail
+bindsym $mod+Mod1+m            exec --no-startup-id wtoggle $mail
 bindsym $mod+Mod1+v            exec --no-startup-id vncviewer
 bindsym $mod+Mod1+Shift+b      exec --no-startup-id virtualbox
 bindsym $mod+Mod1+d            exec --no-startup-id discord
 bindsym $mod+Mod1+r            exec --no-startup-id $terminal -c newsboat_float -e newsboat
 bindsym $mod+Mod1+Ctrl+r       exec --no-startup-id $terminal -c newsboat_float -e podboat
-bindsym $mod+Scroll_Lock       exec --no-startup-id wtoggle bitwarden
+bindsym $mod+Scroll_Lock       exec --no-startup-id wtoggle -c bitwarden bitwarden-desktop
 bindsym $mod+Pause       	   exec --no-startup-id sleep 1 && xset dpms force off
-#bindsym $mod+y 				   workspace y; exec --no-startup-id $browser "https://youtube.com"
+bindsym $mod+y 				   workspace y; exec --no-startup-id $browser "https://youtube.com"
 
-#bindsym Print            --release exec --no-startup-id scrot && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot" "saved to homedir"
-bindsym $mod+Print       --release exec --no-startup-id scrot -u && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot (window)" "saved to homedir"
-bindsym Print --release exec --no-startup-id flameshot gui
+bindsym Print            --release exec --no-startup-id maim ~/$(date +%s).png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot" "saved to homedir"
+bindsym $mod+Print       --release exec --no-startup-id maim -i $(xdotool getactivewindow) ~/$(date +%s).png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot (window)" "saved to homedir"
+bindsym $mod+Shift+Print --release exec --no-startup-id maim -b 3 -s | xclip -sel c -t image/png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot (selection)" "copied to clipboard"
 
 bindsym $mod+Shift+x     --release exec --no-startup-id xkill
 bindsym $mod+Mod1+x      --release exec --no-startup-id xpick
@@ -170,20 +178,26 @@ bindsym $mod+v        exec --no-startup-id clipmenu
 bindsym Menu          exec --no-startup-id clipmenu
 bindsym $mod+Menu     exec --no-startup-id eval "$(xclip -sel c -o)"
 # 7aske-scripts
-#bindsym $mod+F2    exec --no-startup-id kblang -t && notify-send "Keyboard Layout" "Toggle"
-bindsym $mod+F2 exec --no-startup-id kblang -fn '$dmenu_font'
+bindsym $mod+Shift+space      exec --no-startup-id notify-send "Keyboard Layout" "Toggle" && kblang -t; exec --no-startup-id sleep 1 && pkill -SIGRTMIN+9 i3blocks
+bindsym $mod+Mod1+Shift+space exec --no-startup-id kblang -fn '$dmenu_font'
 # 7aske-scripts
-bindsym $mod+Home     exec --no-startup-id google-search
+bindsym XF86Search exec --no-startup-id google-search
 
 bindsym $mod+Tab      exec --no-startup-id rofi -show window
 
 bindsym $mod+Ctrl+Shift+semicolon exec --no-startup-id i3shell
 # sticky key fix
-bindsym $mod+F12    exec --no-startup-id xdotool keyup Shift_L Shift_R Control_L Control_R Alt_L Alt_R Super_L Super_R Hyper_L Hyper_R Caps_Lock 204 205 206 207
+bindsym $mod+F12       exec --no-startup-id xdotool keyup Shift_L Shift_R Control_L Control_R Alt_L Alt_R Super_L Super_R Hyper_L Hyper_R Caps_Lock 204 205 206 207
+bindsym $mod+Shift+F12 exec --no-startup-id autorandr --change && nitrogen --restore
 
+bindsym $mod+Shift+Home   exec --no-startup-id desk move-to
+bindsym $mod+Home         exec --no-startup-id desk stand
+bindsym $mod+End          exec --no-startup-id desk sit
+bindsym $mod+Mod1+Home    exec --no-startup-id desk up   7
+bindsym $mod+Mod1+End     exec --no-startup-id desk down 7
 
 # layout toggling mode
-set $mode_codeopen codeopen: (t)erm (n)vim (v)scode (i)dea (c)lion (g)oland (p)ycharm (w)ebstorm (s)studio (j)etbrains
+set $mode_codeopen codeopen: (t)erm (n)vim (v)scode (i)dea (c)lion (g)oland (p)ycharm (w)ebstorm (s)studio (r)ider (j)etbrains
 bindsym $mod+o mode "$mode_codeopen"
 set $codeopen_menu rofi
 mode "$mode_codeopen" {
@@ -197,6 +211,7 @@ mode "$mode_codeopen" {
     bindsym p exec --no-startup-id codeopen -m $codeopen_menu -t pycharm; mode default
     bindsym w exec --no-startup-id codeopen -m $codeopen_menu -t webstorm; mode default
     bindsym s exec --no-startup-id codeopen -m $codeopen_menu -t studio; mode default
+    bindsym r exec --no-startup-id codeopen -m $codeopen_menu -t rider; mode default
     bindsym j exec --no-startup-id codeopen -m $codeopen_menu -t jetbrains; mode default
 
     # exit system mode: "Enter" or "Escape"
@@ -204,7 +219,7 @@ mode "$mode_codeopen" {
     bindsym Escape mode default
 }
 
-set $mode_ide open: (i)dea (c)lion (g)oland (p)ycharm (w)ebstorm (s)studio (d)atagrip
+set $mode_ide open: (i)dea (c)lion (g)oland (p)ycharm (w)ebstorm (s)studio (r)ider (d)atagrip
 bindsym $mod+Shift+o mode "$mode_ide"
 mode "$mode_ide" {
     # set default desktop layout <stacking|tabbed>
@@ -215,6 +230,7 @@ mode "$mode_ide" {
     bindsym p exec --no-startup-id pycharm; mode default
     bindsym w exec --no-startup-id webstorm; mode default
     bindsym s exec --no-startup-id studio; mode default
+    bindsym r exec --no-startup-id rider; mode default
     bindsym d exec --no-startup-id datagrip; mode default
 
     # exit system mode: "Enter" or "Escape"
@@ -290,19 +306,25 @@ for_window [class=".*"] title_format " %title"
 for_window [class=".*"] border pixel $border_size
 
 # some role configuration
-for_window [class="floating"] floating enable
+for_window [class="floating"] floating enable, resize set 70 ppt 70 ppt, move position center
 
 # use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
+# middle button on the title bar kills the window
+bindsym --release button2 kill
+
 # float and center the current window
-#bindsym $mod+c floating enable; move position center
+bindsym $mod+c floating enable; move position center
 
 # change borders
 bindsym $mod+u border toggle $border_size; exec --no-startup-id notify-send --hint=int:transient:1 -t $notif_duration "border" "border toggled"
 
 # kill focused window
 bindsym $mod+q kill
+
+# master stack
+#bindsym $mod+space exec --no-startup-id i3-swap-master
 
 # split orientation
 bindsym $mod+space split toggle; exec --no-startup-id notify-send --hint=int:transient:1 -t $notif_duration 'toggled tiling'
@@ -353,6 +375,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 
+workspace w output primary
+workspace 1 output primary
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -392,6 +417,8 @@ bindsym $mod+Ctrl+Up    move workspace to output up
 bindsym $mod+Ctrl+Right move workspace to output right
 bindsym $mod+Ctrl+Down  move workspace to output down
 
+bindsym $mod+Mod1+Return exec --no-startup-id i3nextws
+
 # mark navigation
 bindsym $mod+Ctrl+m     exec --no-startup-id xinp --i3 -f $dmenu_font -F 'mark %s' -l 1 -p 'mark: '
 bindsym $mod+apostrophe exec --no-startup-id xinp --i3 -f $dmenu_font -F '[con_mark="%s"] focus' -l 1 -p 'goto: '
@@ -401,7 +428,7 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 bindsym $mod+minus scratchpad show
-bindsym $mod+backslash exec --no-startup-id i3nextws
+
 # navigate workspaces next / previous
 #bindsym $mod+Ctrl+Shift+Right workspace next
 #bindsym $mod+Ctrl+Shift+Left workspace prev
@@ -415,48 +442,50 @@ bindsym $mod+backslash exec --no-startup-id i3nextws
 
 # Open applications on specific workspaces
 assign [class="(?i)TelegramDesktop"] $ws9
-assign [class="qbittorrent"] torrent
 assign [class="(?i)caprine"] $ws9
 assign [class="(?i)discord"] $ws9
 assign [class="(?i)lightcord"] $ws9
 assign [class="(?i)skype"] $ws9
-assign [class="(?i)viber"] $ws8
+assign [class="(?i)viber"] $ws9
+assign [title="WhatsApp"] $ws9
 assign [class="zoom"] zoom
-assign [title="WhatsApp"] $ws8
-assign [class="Idena"] i
+assign [title="World of Warcraft"] w
+assign [class="battle.net.exe"] w
+assign [class="Chia Blockchain"] c
 
 # Open specific applications in floating mode
-for_window [class="Arandr"] floating enable,resize set 800 600, move position center
 for_window [class="(?i)GParted"] floating enable, border normal
 for_window [class="(?i)System-config-printer.py"] floating enable, border normal
 for_window [class="(?i)anydesk.bin"] floating enable, border normal
 for_window [class="(?i)blueman-manager"] floating enable, resize set 512 256, move position center
 for_window [class="(?i)blueman-services"] floating enable, resize set 512 256, move position center
-for_window [class="(?i)cantata"] floating enable, resize set 1024 768, move position center
+for_window [class="(?i)cantata"] floating enable, resize set 70 ppt 70 ppt, move position center
 for_window [class="(?i)feh"] fullscreen enable
-for_window [class="(?i)galculator"] floating enable
-for_window [class="(?i)gnome-control-center"] floating enable, resize set 1280 820, move position center
+for_window [class="(?i)gnome-calculator"] floating enable
+for_window [class="(?i)gnome-control-center"] floating enable, resize set 60 ppt 70 ppt, move position center
 for_window [class="(?i)gnome-disks"] floating enable
-for_window [class="(?i)gnome-tweaks"] floating enable, resize set 1280 820, move position center
+for_window [class="(?i)gnome-tweaks"] floating enable, resize set 60 ppt 70 ppt, move position center
 for_window [class="(?i)jetbrains-toolbox"] floating enable, sticky enable
 for_window [class="(?i)nm-connection-editor"] floating enable, border normal
-for_window [class="(?i)spotify"] floating enable, resize set 1185 750, move position center
+for_window [class="(?i)spotify"] floating enable, resize set 70 ppt 70 ppt, move position center
 for_window [class="(?i)sxiv"] fullscreen enable
 for_window [class="(?i)vncviewer"] move position center
-for_window [class="Arandr"] floating enable,resize set 800 600, move position center
-for_window [class="Baobab"] floating enable resize set 1024 720, move position center
+for_window [class="Arandr"] floating enable, move position center
+for_window [class="Baobab"] floating enable resize set 60 ppt 70 ppt, move position center
 for_window [class="Deluge"] floating enable move position center
+for_window [class="Evolution"] floating enable, resize set 70 ppt 70 ppt, move position center
+for_window [class="Thunderbird"] floating enable, resize set 70 ppt 70 ppt, move position center
 for_window [class="Gnome-font-viewer"] floating enable, move position center
 for_window [class="Kvantum Manager"] floating enable, move position center
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable, move position center, sticky enable, border normal
-for_window [class="Mailspring"] floating enable, resize set 1333 768, move position center
+for_window [class="Mailspring"] floating enable, resize set 60 ppt 70 ppt, move position center
 for_window [class="Manjaro Settings Manager"] floating enable, border normal
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Nitrogen"] floating enable, sticky enable, border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable, resize set 800 600, move position center, sticky enable
+for_window [class="Pavucontrol"] floating enable, resize set 40 ppt 50 ppt, move position center, sticky enable
 for_window [class="Qtconfig-qt4"] floating enable, sticky enable, border normal
 for_window [class="Simple-scan"] floating enable, border normal
 for_window [class="Timeset-gui"] floating enable, border normal
@@ -464,17 +493,18 @@ for_window [class="Transmission"] floating enable, move position center
 for_window [class="Xfburn"] floating enable
 for_window [class="Xfce4-power-manager-settings"] floating enable, move position center
 for_window [class="Xfce4-settings-manager"] floating enable, move position center
+for_window [class="Xfce4-session-settings"] floating enable, move position center
 for_window [class="Yad"] floating enable, move position center
 for_window [class="fpakman"] floating enable
 for_window [class="java-lang-Thread"] floating enable, move position center
-for_window [class="mpv"] floating enable, resize set 1600 900, move position center, fullscreen enable
+for_window [class="mpv"] floating enable, resize set 80 ppt 80 ppt, move position center, fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [class="qt5ct"] floating enable, sticky enable, border normal
-for_window [title=".*Bitwarden.*"] floating enable, resize set 1280 768, move position center
+for_window [title=".*Bitwarden.*"] floating enable, resize set 70 ppt 80 ppt, move position center
 for_window [title=".*Emulator.*"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [title="alsamixer"] floating enable
-for_window [title="calc"] floating enable, move position center, sticky enable
+for_window [class="calc"] floating enable, resize set 20ppt 40ppt, move position center, sticky enable
 for_window [title="i3_help"] floating enable, sticky enable, border normal
 for_window [title="win0"] floating enable, move position center
 for_window [class="zoom"] floating enable, move position center
@@ -484,20 +514,21 @@ for_window [class="zoom" title="Zoom Meeting"] floating disable
 for_window [class="zoom" title="Zoom - Free Account"] floating disable
 
 # utility
-for_window [class="floating_popup"] floating enable, resize set 1280 768, move position center
+for_window [class="floating_popup"] floating enable, resize set 70ppt 70ppt, move position center
+for_window [class="STATUSBAR_POPUP"] floating enable, resize set 20ppt 40ppt, move position center
 for_window [class="fullscreen"] fullscreen enable
-for_window [class="newsboat_float"] floating enable, resize set 1280 768, move position center
-for_window [class="weather_floating"] floating enable, resize set 1280 820, move position center
-for_window [class="tmux_floating"] floating enable, resize set 1333 768, move position center
+for_window [class="newsboat_float"] floating enable, resize set 70ppt 70ppt, move position center
+for_window [class="weather_floating"] floating enable, resize set 75ppt 82ppt, move position center
+for_window [class="tmux_floating"] floating enable, resize set 70ppt 70ppt, move position center
 
 # games
-for_window [title="World of Warcraft"] layout tabbed
-for_window [class="(?i)steam"] floating enable, resize set 1280 768, move position center
+for_window [title="^World of Warcraft$"] layout tabbed border none
+for_window [class="(?i)steam"] floating enable, resize set 70ppt 70ppt, move position center
 for_window [class="(?i)lutris"] floating enable, move position center
-for_window [class="epicgameslauncher.exe"] floating enable, resize set 1280 820, move position center
 
 # virtual machines
 for_window [class="VirtualBox Machine" title="(?i)^win"] move container to workspace w
+for_window [title=".*on QEMU/KVM"]      floating disable, border none, move container to workspace v
 for_window [class="VirtualBox Machine"] floating disable, border none, move container to workspace v
 for_window [class="VirtualBox Manager"] floating disable, border 2
 
@@ -569,33 +600,27 @@ mode "$mode_system" {
 #  \__,_|\__,_|\__\___/|___/\__\__,_|_|   \__|
 # autostart
 
+exec_always --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id xfce4-power-manager
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 # exec_always --no-startup-id pamac-tray
 exec_always --no-startup-id pgrep udiskie || udiskie -s -f $file -a --appindicator
-#exec_always --no-startup-id killall barrier; sleep 10; barrier
+exec_always --no-startup-id killall barrier; sleep 10; pgrep barrier || barrier
 exec_always --no-startup-id pgrep pidswallow || pidswallow -gl
 exec_always --no-startup-id clipmenud
 exec_always --no-startup-id pgrep unclutter || unclutter --fork --timeout 5 --jitter 10 --ignore-scrolling
-exec_always --no-startup-id pgrep xautolock || xautolock -resetsaver -detectsleep -time 10 -locker lock -cornersize 64 -corners ----
+# exec_always --no-startup-id pgrep xautolock || xautolock -resetsaver -detectsleep -time 10 -notify 10 -locker lock -cornersize 64 -corners ----
 # 7aske-scripts
 exec_always --no-startup-id dunst_reload
 # 7aske-scripts
 exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id pgrep -x $terminal || $terminal
 
-# pulseaudio
+# pulseaudio (weird hack because pulseaudi doesn't seem to properly start every time)
 exec_always --no-startup-id pgrep pulseaudio || (while ! $(pulseaudio -k; pulseaudio -D); do; done)
-exec_always --no-startup-id pgrep pasystray  || pasystray
-
-#zoom and links
-bindsym $mod+z exec --no-startup-id zoomsh
-bindsym $mod+Mod1+m exec --no-startup-id /home/toma/util/mouse.sh
-bindsym $mod+Mod1+i exec --no-startup-id isumlinks
-bindsym $mod+Shift+End exec --no-startup-id rdisc
-bindsym $mod+Mod1+l exec --no-startup-id i3exit lock
+# exec_always --no-startup-id pgrep pasystray  || pasystray
 
 # touchpad and keyboard config
 # 7aske-scripts
@@ -606,14 +631,19 @@ exec_always --no-startup-id xset r rate 195 55
 # https://github.com/olemartinorg/i3-alternating-layout
 exec_always --no-startup-id alternating_layouts
 
+# master stack
+# https://github.com/Hippo0o/i3-master-layout
+#exec_always --no-startup-id i3-master-layout
+
 # compton/picom
 bindsym $mod+Shift+F5 exec --no-startup-id killall picom
-bindsym $mod+F5 exec --no-startup-id picom -b --experimental-backends --config ~/.config/compton/compton.conf
-# exec_always --no-startup-id sleep 1 && pgrep picom || picom -b --experimental-backends --config ~/.config/compton/compton.conf
+bindsym $mod+F5 exec --no-startup-id picom -b --config ~/.config/compton/compton.conf
+exec_always --no-startup-id sleep 1 && pgrep picom || picom -b --config ~/.config/compton/compton.conf
 
 # set background
 # exec_always --no-startup-id wal -i ~/.config/wallpaper
 exec --no-startup-id ~/.fehbg
+exec --no-startup-id nitrogen --restore
 
 #            _
 #   ___ ___ | | ___  _ __ ___
@@ -641,7 +671,7 @@ set_from_resource $color14    i3wm.color14 #A3BE8C
 set_from_resource $color15    i3wm.color15 #B48EAD
 set_from_resource $fg         foreground
 set_from_resource $bg         background
-
+set               $bg_trans   #2E344077
 
 # class                    border  background       text indicator   cborder
 client.focused            $color3     $color3    $color0  $color13   $color3
@@ -660,6 +690,7 @@ client.background             $bg
 
 # Start i3blocks to display status bar
 bar {
+	i3bar_command i3bar -t
 	status_command i3blocks
     position top
 
@@ -670,9 +701,9 @@ bar {
 	workspace_min_width 32
     colors {
         #background $background
-        background                 $bg
-        focused_background         $bg
-        statusline                 $fg
+        background            $bg_trans
+        focused_background    $bg_trans
+        statusline            $fg
         focused_statusline    $color15
         separator             $color12
 
@@ -711,7 +742,7 @@ workspace v   gaps outer 0
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on 
+# smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) on|no_gaps
 # smart_borders no_gaps

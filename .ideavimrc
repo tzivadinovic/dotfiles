@@ -10,7 +10,7 @@ set noshowmode
 set nowrap
 set nu rnu
 set showcmd
-set ignorecase
+set smartcase
 set smartindent
 set scrolloff=8
 
@@ -44,9 +44,9 @@ map  <leader>gu     <Action>(Vcs.RollbackChangedLines)
 map  <S-Space>      <Action>(GotoNextError)
 nmap <c-n>          <Action>(SelectNextOccurrence)
 nmap <c-w>q         <Action>(CloseEditor)
-nmap <c-w>w         <Action>(Switcher)
+nmap <c-w>Q         <Action>(CloseAllEditorsButActive)
 nmap <leader>G      <Action>(Generate)
-map <leader>R      <Action>(RefactoringMenu)
+map  <leader>R      <Action>(RefactoringMenu)
 nmap <leader>a      <Action>(ShowIntentionActions)
 nmap <leader>gd     <Action>(QuickJavaDoc)
 nmap <leader>r      <Action>(RenameElement)
@@ -56,6 +56,8 @@ nmap gD             <Action>(GotoImplementation)
 nmap g[             <Action>(GotoPreviousError)
 nmap g]             <Action>(GotoNextError)
 nmap gd             <Action>(GotoDeclaration)
+nmap gt             <Action>(GotoTest)
+nmap gs             <Action>(GotoSuperMethod)
 
 command Goya        action ToggleDistractionFreeMode
 command W           action Switcher
