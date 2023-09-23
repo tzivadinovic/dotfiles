@@ -42,8 +42,8 @@ command=~/.local/bin/statusbar/disk /home 
 #interval=60
 #command=~/.local/bin/crypto -t0 -f '%s $%.1f'
 
-[launch]
-interval=60
+#[launch]
+#interval=60
 
 #[tasks]
 #label=
@@ -59,9 +59,9 @@ interval=60
 interval=60
 signal=9
 
-[services]
-interval=10
-signal=9
+#[services]
+#interval=10
+#signal=9
 
 #[desk]
 #label= 
