@@ -56,6 +56,7 @@ bindsym $mod+Ctrl+p       exec --no-startup-id padefault ma;           exec --no
 bindsym $mod+Mod1+p       exec --no-startup-id padefault mas;          exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+Shift+p      exec --no-startup-id padefault toggle;       exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+Ctrl+Shift+p exec --no-startup-id padefault toggle-focus; exec --no-startup-id sleep 0.05 && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+comma        exec --no-startup-id /home/toma/scripts/repeat-delay.sh
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10; notify-send --hint=int:transient:1 -t $notif_duration 'brightness up'"
@@ -75,7 +76,7 @@ bindsym XF86Calculator exec --no-startup-id $terminal -c calc -e calc
 # media controls re-using i3blocks script
 bindsym $mod+period            exec --no-startup-id BLOCK_BUTTON=1 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.5 && pkill -SIGRTMIN+11 i3blocks
 bindsym $mod+slash             exec --no-startup-id BLOCK_BUTTON=2 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.1 && pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+comma             exec --no-startup-id BLOCK_BUTTON=3 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.5 && pkill -SIGRTMIN+11 i3blocks
+#bindsym $mod+comma             exec --no-startup-id BLOCK_BUTTON=3 ~/.local/bin/statusbar/music; exec --no-startup-id sleep 0.5 && pkill -SIGRTMIN+11 i3blocks
 bindsym $mod+Shift+period      exec --no-startup-id BLOCK_BUTTON=4 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+Shift+comma       exec --no-startup-id BLOCK_BUTTON=5 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+Ctrl+Shift+period exec --no-startup-id BLOCK_BUTTON=6 ~/.local/bin/statusbar/music; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
@@ -162,7 +163,7 @@ bindsym $mod+Scroll_Lock       exec --no-startup-id wtoggle -c bitwarden bitward
 bindsym $mod+Pause       	   exec --no-startup-id sleep 1 && xset dpms force off
 #bindsym $mod+y 				   workspace y; exec --no-startup-id $browser "https://youtube.com"
 
-bindsym Print            --release exec --no-startup-id maim ~/$(date +%s).png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot" "saved to homedir"
+bindsym Print            --release exec --no-startup-id flameshot gui
 bindsym $mod+Print       --release exec --no-startup-id maim -i $(xdotool getactivewindow) ~/$(date +%s).png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot (window)" "saved to homedir"
 bindsym $mod+Shift+Print --release exec --no-startup-id maim -b 3 -s | xclip -sel c -t image/png && notify-send -i screengrab --hint=int:transient:1 -t $notif_duration "screenshot (selection)" "copied to clipboard"
 

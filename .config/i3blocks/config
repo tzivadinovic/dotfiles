@@ -12,8 +12,8 @@ align=left
 interval=5
 signal=11
 
-[weather]
-interval=60
+#[weather]
+#interval=60
 
 [cpu]
 interval=5
